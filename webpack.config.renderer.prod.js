@@ -1,5 +1,6 @@
 /**
- * Build config for electron renderer process
+ * Build config for electr
+on renderer process
  */
 
 import path from 'path';
@@ -10,13 +11,13 @@ import merge from 'webpack-merge';
 import BabiliPlugin from 'babili-webpack-plugin';
 import baseConfig from './webpack.config.base';
 
+
+
 export default merge.smart(baseConfig, {
   devtool: 'source-map',
-
   target: 'electron-renderer',
 
   entry: ['babel-polyfill', './app/index'],
-
   output: {
     path: path.join(__dirname, 'app/dist'),
     publicPath: '../dist/'
@@ -154,7 +155,6 @@ export default merge.smart(baseConfig, {
       }
     ]
   },
-
   plugins: [
     /**
      * Create global constants which can be configured at compile time.
@@ -165,7 +165,6 @@ export default merge.smart(baseConfig, {
      * NODE_ENV should be production so that modules do not perform certain
      * development checks
      */
-
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'production', // use 'development' unless process.env.NODE_ENV is defined
       DEBUG: false,
@@ -176,7 +175,6 @@ export default merge.smart(baseConfig, {
     /**
      * Babli is an ES6+ aware minifier based on the Babel toolchain (beta)
      */
-
     new ExtractTextPlugin('style.css'),
 
     new BundleAnalyzerPlugin({
